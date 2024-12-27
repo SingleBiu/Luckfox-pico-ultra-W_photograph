@@ -1,8 +1,8 @@
 /*
  * @Author: SingleBiu
  * @Date: 2021-07-22 16:55:19
- * @LastEditors: SingleBiu
- * @LastEditTime: 2021-09-12 23:07:28
+ * @LastEditors: SingleBiu 854390236@qq.com
+ * @LastEditTime: 2024-12-27 13:01:58
  * @Description: LCD函数头文件
  */
 #if !defined(__SCREEN_H__)
@@ -53,5 +53,7 @@ void lcd_draw_point(int x, int y, int color);
 void lcd_draw_rect(int x0, int y0, int w, int h, int color);
 void lcd_draw_bmp(char *file, int w, int h, int x0, int y0);
 void display(char *ptr,int x,int y);
+void lcd_draw_word(char *ch, int len, int w, int color, int x0, int y0);
+void display_num(int num, int lens, int w, int color, int x0, int y0);
 
 #endif // __SCREEN_H__

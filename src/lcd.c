@@ -1,8 +1,8 @@
 /*
  * @Author: SingleBiu
  * @Date: 2021-07-22 17:11:17
- * @LastEditors: SingleBiu
- * @LastEditTime: 2021-07-28 19:30:23
+ * @LastEditors: SingleBiu 854390236@qq.com
+ * @LastEditTime: 2024-12-27 13:01:34
  * @Description: LCD函数文件
  */
 #include"lcd.h"
@@ -109,5 +109,32 @@ void display(char *ptr,int x,int y)
     else if ( (strstr(ptr,".jpg")) != NULL)
     {
         jpg_displasy(ptr,x,y);
+    }
+}
+
+//在lcd上显示一个文字
+// ch：文字的点阵数组
+// len: 数组的长度
+// w: 文字的宽度
+// color: 文字的颜色
+// x0,y0: 显示的起始点的横纵坐标
+void lcd_draw_word(char *ch, int len, int w, int color, int x0, int y0)
+{
+    int i, j;
+    int x, y;
+    int flag = w / 8;
+    //遍历整个点阵数组
+    for (i = 0; i < len; i++)
+    {
+        for (j = 7; j >= 0; j--)
+        {
+            // if (ch[i] & (0x80/pow(2,7-j)))
+            if ((ch[i] >> j) & 1)
+            {
+                x = 7 - j + 8 * (i % flag) + x0;
+                y = i / flag + y0;
+                lcd_draw_point(x, y, color);
+            }
+        }
     }
 }
