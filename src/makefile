@@ -1,4 +1,4 @@
-TARGET := main
+TARGET := ../out/photograph
 
 CC:= arm-linux-gcc
 
